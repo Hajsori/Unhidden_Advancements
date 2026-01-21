@@ -86,3 +86,17 @@ sourceSets.each {
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
 }
+
+tasks.named('jar', Jar) {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_author,
+                'Specification-Version'   : version,
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : version,
+                'Implementation-Vendor'   : mod_author
+        ])
+        attributes['MixinConfigs'] = "${mod_id}.mixins.json"
+    }
+}
