@@ -5,7 +5,7 @@ import net.fabricmc.api.ModInitializer;
 public class UnhiddenAdvancements implements ModInitializer {
     @Override
     public void onInitialize() {
-        Constants.LOG.info("Hello Fabric world!");
+        Constants.LOG.info("Unhidden Advancements Fabric loaded");
         CommonClass.init();
     }
 }
