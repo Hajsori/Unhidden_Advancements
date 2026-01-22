@@ -4,14 +4,14 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 base {
-    archivesName = "${mod_name}-forge-${minecraft_version}"
+    archivesName = "${mod_name}-forge"
 }
 mixin {
     config("${mod_id}.mixins.json")
 }
 
 minecraft {
-    mappings channel: 'official', version: minecraft_version
+    mappings channel: 'official', version: min_minecraft_version
 
     copyIdeResources = true //Calls processResources when in dev
 
@@ -66,7 +66,7 @@ minecraft {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "net.minecraftforge:forge:${min_minecraft_version}-${forge_version}"
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
 
     // Forge's hack fix

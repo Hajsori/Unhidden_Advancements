@@ -47,7 +47,7 @@ repositories {
 ['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
     configurations."$variant".outgoing {
         capability("$group:${base.archivesName.get()}:$version")
-        capability("$group:$mod_id-${project.name}-${minecraft_version}:$version")
+        capability("$group:$mod_id-${project.name}-${min_minecraft_version}:$version")
         capability("$group:$mod_id:$version")
     }
     publishing.publications.configureEach {
@@ -73,15 +73,15 @@ jar {
                     'Implementation-Title'  : project.name,
                     'Implementation-Version': project.jar.archiveVersion,
                     'Implementation-Vendor' : mod_author,
-                    'Built-On-Minecraft'    : minecraft_version])
+                    'Built-On-Minecraft'    : min_minecraft_version])
     }
 }
 
 processResources {
     var expandProps = ['version'                      : version,
                        'group'                        : project.group, //Else we target the task's group.
-                       'minecraft_version'            : minecraft_version,
-                       'minecraft_version_range'      : minecraft_version_range,
+                       'min_minecraft_version'        : min_minecraft_version,
+                       'excluded_minecraft_version'   : excluded_minecraft_version,
                        'fabric_loader_version'        : fabric_loader_version,
                        'mod_name'                     : mod_name,
                        'mod_author'                   : mod_author,
